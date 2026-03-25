@@ -58,8 +58,8 @@ const Input=()=>{
 
 
     return <>
-        { err && <p style={{color:"red"}}>{err}</p>  }
-        { sucess && <p style={{color:"green"}}>{sucess}</p>}
+        { err && <span style={{color:"red"}}>{err}</span>  }
+        { sucess && <h2 style={{color:"green"}}>{sucess}</h2>}
 
     
         <form onSubmit={handleSubmit}>
@@ -68,9 +68,9 @@ const Input=()=>{
         <input type="email" name="email" placeholder="Enter the email" onChange={updateField} data-testid = 'email'></input>
         <br/>
         <select data-testid = 'gender'>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
+            <option value={Male}>Male</option>
+            <option value={Female}> Female</option>
+            <option value={Other}>Other</option>
           </select>
           <br/>
           <input type="number" name="number" placeholder="Enter the number" onChange={updateField} data-testid = 'phoneNumber'></input>
