@@ -27,7 +27,7 @@ const Input=()=>{
             setSuccess("");
             return;
         }
-        if(!/^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$/.test(name))
+        if(!/^[a-zA-Z0-9 @._-]+$/.test(name))
         {
           setErr("Name is not alphanumeric")
           setSuccess("");
