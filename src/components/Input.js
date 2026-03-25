@@ -5,11 +5,12 @@ const Input=()=>{
   let [input,setInput]=useState({
         name:"",
         email:"",
+        gender:["Male","Female","Other"],
         number:"",
         password:"" });
     let [err,setErr]=useState("");
     let [sucess,setSuccess]=useState("")
-    let {name,email,number,password}=input;
+    let {name,email,number,gender,password}=input;
 
     function updateField(e)
     {
@@ -68,9 +69,9 @@ const Input=()=>{
         <input type="email" name="email" placeholder="Enter the email" onChange={updateField} data-testid = 'email'></input>
         <br/>
         <select data-testid = 'gender'>
-            <option value={Male}>Male</option>
-            <option value={Female}> Female</option>
-            <option value={Other}>Other</option>
+            <option value={gender[0]}>Male</option>
+            <option value={gender[1]}> Female</option>
+            <option value={gender[2]}>Other</option>
           </select>
           <br/>
           <input type="number" name="number" placeholder="Enter the number" onChange={updateField} data-testid = 'phoneNumber'></input>
