@@ -17,6 +17,7 @@ const Input=()=>{
        let val=e.target.name;
        setInput({...input, [val]:e.target.value })
     }
+    
     function handleSubmit(e)
     {
         e.preventDefault();
@@ -26,7 +27,7 @@ const Input=()=>{
             setSuccess("");
             return;
         }
-        if(!name.includes(" "))
+        if(!/^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$/.test(name))
         {
           setErr("Name is not alphanumeric")
           setSuccess("");
