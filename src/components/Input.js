@@ -5,7 +5,7 @@ const Input=()=>{
   let [input,setInput]=useState({
         name:"",
         email:"",
-        gender:["Male","Female","Other"],
+        gender:"",
         number:"",
         password:"" });
     let [err,setErr]=useState("");
@@ -22,13 +22,13 @@ const Input=()=>{
         e.preventDefault();
         if(!name && !email && !number && !password)
         {
-            setErr("All fields are mandatory.")
+            setErr("All fields are mandatory")
             setSuccess("");
             return;
         }
         if(!name.includes(" "))
         {
-          setErr(" Name is not alphanumeric.")
+          setErr("Name is not alphanumeric")
           setSuccess("");
           return;
         }
@@ -38,9 +38,15 @@ const Input=()=>{
             setSuccess("");
             return;
         }
-        if(number.includes("abcdefg"))
+ if(["Male","Female","Other"].includes(gender))
         {
-            setErr(" Phone Number must contain only numbers.")
+           setErr(" Please identify as male, female or others")
+           setSuccess("");
+           return;
+        }
+        if(isNaN(number))
+        {
+            setErr("Phone Number must contain only numbers")
             setSuccess("");
             return;
         }
@@ -52,7 +58,7 @@ const Input=()=>{
         }
 
         let p=email.slice(0,email.indexOf("@"));
-            setSuccess("Hello",{p});
+            setSuccess(`Hello${p}`);
             setErr("")
         
     }
@@ -68,7 +74,7 @@ const Input=()=>{
         <br/>
         <input type="email" name="email" placeholder="Enter the email" onChange={updateField} data-testid = 'email'></input>
         <br/>
-        <select data-testid = 'gender'>
+        <select data-testid = 'gender' onChange={updateField}>
             <option value={gender[0]}>Male</option>
             <option value={gender[1]}> Female</option>
             <option value={gender[2]}>Other</option>
